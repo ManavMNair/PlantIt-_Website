@@ -1,0 +1,17 @@
+.dashboard-main{
+    display: flex;
+}
+.main-items{
+    display: flex;
+}
+
+
+
+@media (max-width : 800px) {
+    .dashboard-main{
+        flex-direction: column;
+    }
+    .main-items{
+        flex-direction: column;
+    }
+}

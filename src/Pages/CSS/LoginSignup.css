@@ -1,0 +1,88 @@
+.colorbg{
+    background: linear-gradient(-180deg, transparent, rgba(2, 100, 32, 0.5));
+}
+.loginsignup{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    height: auto;
+    border-radius: 20px 20px 0px 0px;
+    margin:  auto;
+}
+.loginsignup-left{
+    height: 450px;
+    width: 50%;
+    background: #30885e;
+    padding: 0px 30px;
+}
+.loginsignup-container{
+    
+    width: 50%;
+    height: 450px;
+    background: white;
+    padding: 0px 30px;
+}
+.loginsignup-container h2{
+    margin-top: 25px;
+}
+.loginsignup-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 25px;
+
+
+}
+.loginsignup-fields input{
+    
+    height: 40px;
+    width: 95%;
+    padding-left: 20px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    color: #5c5c5c;
+    font-size: 14px;
+
+}
+.loginsignup-container button{
+    width: 100%;
+    height: 40px;
+    color: white;
+    background: #30885e;
+    margin-top: 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+.loginsignup-login{
+    margin-top: 20px;
+    color: #303b34;
+    font-size: 16px;
+    font-weight: 500;
+}
+.loginsignup-login span{
+    color: #30885e;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}
+.loginsignup-agree{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+    color: #303b34;
+    font-weight: 500;
+    font-size: 12px;
+}
+.loginsignup-fields input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    
+
+}
+.loginsignup-fields label{
+    font-size: small;
+    position: absolute;
+    margin-left: 5px;
+}

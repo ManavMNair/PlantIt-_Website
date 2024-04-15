@@ -1,0 +1,35 @@
+.recommendations{
+    width: 15rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    
+}
+a{
+    text-decoration: none;
+}
+Link{
+    text-decoration: none;
+}
+.recommendations h6{
+    margin: 6px 0px;
+    padding-left: 10px;
+}
+.recommendations p{
+    margin: 6px 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.recommendations:hover{
+    transform: scale(1.05);
+    transition: 0.4s;
+}
+.recommendations img{
+    padding: 5px;
+    width: auto;
+    height: 300px;
+}

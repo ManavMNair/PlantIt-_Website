@@ -1,0 +1,36 @@
+.PeoplesChoice{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    
+    scrollbar-width: none;
+    gap: 20px;
+    height: 100vh;
+    margin-left: 3rem;
+    margin-right: auto;
+}
+.PeoplesChoice-heading{
+    z-index: 999;
+}
+.PeoplesChoice h2{
+    color: #064a29;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 1rem;
+
+}
+.PeoplesChoice hr{
+    width: 230px;
+    height: 4px;
+    border-radius: 10px;
+    background: #036334;
+    margin-left: 1rem;
+}
+.PeoplesChoice_items{
+    margin-top: 50px 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    overflow-y: auto;
+}

@@ -1,0 +1,29 @@
+.navbarSeller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 40px;
+    box-shadow: 0 1px 3px -2px #000;
+    margin-bottom: 2px;
+    background: white;
+    
+}
+.logo{
+    height: 100px;
+    
+}
+.profile{
+    height: 40px;
+}
+
+@media (max-width:800px) {
+    .logo{
+        height:80px
+    }
+    .profile{
+        height: 35px;
+    }
+    .navbarSeller{
+        padding: 5px 40px 5px 20px;
+    }
+}

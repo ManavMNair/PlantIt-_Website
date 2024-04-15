@@ -1,0 +1,28 @@
+.accessories{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    gap: 10px;
+    height: 90vh;
+    margin-left: 2rem;
+}
+
+.accessories h2{
+    color: #064a29;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+.accessories hr{
+    width: 210px;
+    height: 4px;
+    border-radius: 10px;
+    background: #036334;
+    margin-left: 1rem;
+}
+.accessories_items{
+    margin-top: 50px;
+    display: flex;
+}

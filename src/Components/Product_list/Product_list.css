@@ -1,0 +1,35 @@
+.Product_list{
+    
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    
+}
+.Product_list h6{
+    margin: 6px 0px;
+    padding-left: 10px;
+    opacity: 70%;
+}
+.Product_list p{
+    margin: 6px 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 00;
+}
+.Product_list:hover{
+    transform: scale(1.05);
+    transition: 0.4s;
+}
+.Product_list img{
+    padding: 5px;
+    width: auto;
+    height: 200px;
+    
+}
+.Product_list p.subcategory{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(62, 59, 59);
+}

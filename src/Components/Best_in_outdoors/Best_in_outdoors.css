@@ -1,0 +1,29 @@
+.Best_in_outdoors{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    gap: 10px;
+    height: 90vh;
+    margin-left: 2rem;
+}
+
+.Best_in_outdoors h2{
+    color: #064a29;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 1rem;
+
+}
+.Best_in_outdoors hr{
+    width: 230px;
+    height: 4px;
+    border-radius: 10px;
+    background: #036334;
+    margin-left: 1rem;
+}
+.Best_in_outdoors_items{
+    margin-top: 50px;
+    display: flex;
+}

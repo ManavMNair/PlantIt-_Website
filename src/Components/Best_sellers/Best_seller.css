@@ -1,0 +1,37 @@
+.Best_seller{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    gap: 10px;
+    height: 90vh;
+    margin-left: 2rem;
+}
+
+.Best_seller h2{
+    color: #064a29;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+.Best_seller hr{
+    width: 160px;
+    height: 4px;
+    border-radius: 10px;
+    background: #036334;
+    margin-left: 1rem;
+}
+.Best_seller_items{
+    margin-top: 50px;
+    display: flex;
+}
+/* .Best_seller::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    
+}
+.Best_seller::-webkit-scrollbar-corner{
+    background: #036334!important;
+    
+} */
