@@ -15,7 +15,8 @@ const SellerDetails = () => {
     storeName: "",
     storeAddress: "",
     storeDescription: "",
-    paymentInfo: ""
+    paymentInfo: "",
+    
   })
 
 

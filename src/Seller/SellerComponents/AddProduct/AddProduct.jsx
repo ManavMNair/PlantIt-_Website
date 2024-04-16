@@ -3,7 +3,6 @@ import './AddProduct.css';
 import upload_icon from '../../SellerAssets/photo.png'
 import { UserContext } from '../../../Context/UserContext';
 import { jwtDecode } from 'jwt-decode'
-// const jwt.decode = require("jwt-decode")
 const jwt = require("jsonwebtoken");
 
 
