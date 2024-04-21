@@ -3,22 +3,30 @@ import './EditProfile.css'
 import upload from '../../SellerAssets/upload.png'
 import { UserContext } from '../../../Context/UserContext'
 import { jwtDecode } from 'jwt-decode'
+import SellerValidation from '../../../Pages/SellerValidation'
 const jwt = require("jsonwebtoken");
 
 
 
 const EditProfile = () => {
+  const [errors,setErrors] = useState({})
   const [profileData, setProfileData] = useState(null);
   const [storeData, setStoreData] = useState({
     sellerId: '',
     storeName: '',
     storeDescription: '',
     storeAddress: '',
-    upiId: '',
+    paymentInfo: '',
     storeBannerUrl: ''
   })
   const [image, setImage] = useState(false)
-
+  const {validateSeller2} = SellerValidation()
+  const validateform =()=>{
+    console.log("Formdata >>",storeData);
+    const validateErrors = validateSeller2(storeData)
+    setErrors(validateErrors)
+    return Object.keys(validateErrors).length === 0;
+  }
 
 
 
@@ -48,7 +56,7 @@ const EditProfile = () => {
             storeName: data.storeName,
             storeDescription: data.storeDescription,
             storeAddress: data.storeAddress,
-            upiId: data.paymentInfo,
+            paymentInfo: data.paymentInfo,
             storeBannerUrl: data.storeBannerUrl || ''
           })
           // console.log("Form Data>>>", storeData);
@@ -65,9 +73,16 @@ const EditProfile = () => {
     }
     fetchProfileData();
   }, [])
+ 
+    
 
   const Edit_Profile = async () => {
-    const requiredFields = ['storeName', 'storeDescription', 'storeAddress', 'upiId'];
+    if (!validateform()){
+      console.log("checking validation function call");
+      return
+    }
+    console.log("Outside validation function call");
+    const requiredFields = ['storeName', 'storeDescription', 'storeAddress', 'paymentInfo'];
     const missingFields = requiredFields.filter(field => !storeData[field]);
 
     if (missingFields.length > 0) {
@@ -152,7 +167,7 @@ const EditProfile = () => {
     console.log("Strore UPI ID changed");
     setStoreData({
       ...storeData,
-      upiId: e.target.value,
+      paymentInfo: e.target.value,
     });
   }
 
@@ -185,21 +200,25 @@ const EditProfile = () => {
           <div className="form_group">
             <label htmlFor="storeName">Store Name:</label>
             <input type="text" name='storeName' id="storeName" value={storeData.storeName} onChange={handleStoreNameChange} required />
+            {errors.storeName ? <p style={{color : "red"}}>{errors.storeName}</p> : <></>}
           </div>
           <div className="form_group_outer">
             <div className="form_group_inner">
               <label htmlFor="storeName">Store Description:</label>
               <textarea type="text" name='storeDescription' className='form_group_textarea' id="storeDescription" rows={10} value={storeData.storeDescription} onChange={handleStoreDescriptionChange} required />
+              {errors.storeDescription ? <p style={{color : "red"}}>{errors.storeDescription}</p> : <></>}
             </div>
             <div className="form_group_inner" >
               <label htmlFor="storeName">Store Address:</label>
               <textarea type="text" name='storeAddress' id="storeAddress" value={storeData.storeAddress} className='form_group_textarea' onChange={handleStoreAddressChange} required />
+              {errors.storeAddress ? <p style={{color : "red"}}>{errors.storeAddress}</p> : <></>}
             </div>
           </div>
 
           <div className="form_group">
             <label htmlFor="storeName"> UPI ID :</label>
-            <input type="text" id="upiId" name='upiId' value={storeData.upiId} onChange={handleUpiIdChange} required />
+            <input type="text" id="paymentInfo" name='paymentInfo' value={storeData.paymentInfo} onChange={handleUpiIdChange} required />
+            {errors.paymentInfo ? <p style={{color : "red"}}>{errors.paymentInfo}</p> : <></>}
           </div>
 
 

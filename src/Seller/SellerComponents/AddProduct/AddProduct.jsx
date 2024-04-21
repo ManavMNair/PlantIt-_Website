@@ -113,8 +113,9 @@ const AddProduct = () => {
           <select type="text" value={productDetails.subcategory} name="subcategory" id="" className='addproduct-selector' onChange={changeHandler} required>
             <option value="">--Select--</option>
             <option value="Best in air purifying">Best in air purifying</option>
+            <option value="Cactus and Succulents">Cactus and Succulents</option>
             <option value="Best in low maintenance">Best in low maintenance</option>
-            <option value="Best in fragrant">Best in fragrant</option>
+            <option value="Best in fragrant">Best in flowering</option>
             <option value="Best in trailing/hanging">Best in trailing/hanging</option>
             <option value="Ayurvedic Plants">Ayurvedic Plants</option>
             <option value="Great deals in vegetables">Great deals in vegetables</option>

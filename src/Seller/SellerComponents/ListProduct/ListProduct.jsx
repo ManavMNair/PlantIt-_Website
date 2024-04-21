@@ -17,14 +17,15 @@ const ListProduct = () => {
     fetchInfo();
   },[])
 
-  const removeProduct= async(id)=>{
-      await fetch('http://localhost:4000/removeProduct',{
+  const removeProduct= async(Id)=>{
+    console.log("id>>",Id);
+      await fetch('http://localhost:4000/removeproduct',{
         method:'POST',
         headers:{
           Accept:'application/json',
           'Content-Type': 'application/json',
         },
-        body:JSON.stringify({id:id})
+        body:JSON.stringify({id:Id})
       })
       await fetchInfo();
   }

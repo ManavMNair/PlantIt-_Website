@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import './CSS/LoginSignup.css'
 import Navbar_shop from '../Components/Navbar_shop/Navbar_shop'
+import Validation from '../Seller/SellerAssets/Validation'
 
 const LoginSignup = () => {
 
     const [state,setState] = useState('login')
+    const [errors,setErrors] = useState ({})
 
     const [formData,setFormData]  = useState({
         name : "",
@@ -14,6 +16,15 @@ const LoginSignup = () => {
 
     const changeHandler= (e)=>{
         setFormData({...formData , [e.target.name]:e.target.value })
+        
+        // setErrors(Validation(formData)) 
+    }
+
+    const validateform =()=>{
+        console.log("Formdata >>",formData);
+        const validateErrors = Validation(formData)
+        setErrors(validateErrors)
+        return Object.keys(validateErrors).length === 0;
     }
 
     const login = async()=>{
@@ -43,8 +54,11 @@ const LoginSignup = () => {
     }
 
     const signup = async ()=>{
+        if (!validateform()){
+            return
+        }
         console.log("Sign up called", formData);
-
+        
         let responseData;
         await fetch ('http://localhost:4000/signup',{
             method : 'POST',
@@ -78,11 +92,15 @@ const LoginSignup = () => {
                     <h2>{state}</h2>
                     <div className="loginsignup-fields">
                         {state==='Sign up'?<input type="text" placeholder='Your Name' autoComplete='false' name='name' value={formData.name } onChange={changeHandler}/> : <></>}
+                        {errors.name ? <p style={{color : "red"}}>{errors.name}</p> : <></>}
                         
                         <input type="email" placeholder='Email Address' autoComplete='off' name='email' value={formData.email } onChange={changeHandler} />
+                        {errors.email ?  <p style={{color : "red"}}>{errors.email}</p>:<></>}
                         
                         <input type="password" placeholder='Password' autoComplete='off' id='myInput' name='password' value={formData.password } onChange={changeHandler} />
+                        {errors.password ? <p style={{color : "red"}}>{errors.password}</p> :<></>}
                         <div>
+                            
                         
                         <input type="checkbox" onClick={() => {
                             var x = document.getElementById("myInput");

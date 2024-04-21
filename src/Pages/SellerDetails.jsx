@@ -4,12 +4,14 @@ import './CSS/SellerLogin.css'
 import { Link, Navigate } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { useNavigate } from 'react-router-dom';
+import SellerValidation from './SellerValidation'
 
 const SellerDetails = () => {
 
   const navigate = useNavigate()
   // userData.sellerId
   const { user, setUser } = useContext(UserContext);
+  const [errors,setErrors] = useState({})
   const userData = user();
   const [formData, setFormData] = useState({
     storeName: "",
@@ -22,10 +24,24 @@ const SellerDetails = () => {
 
 
 
+
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+ const {validateSeller2} = SellerValidation()
+  const validateform =()=>{
+    console.log("Formdata >>",formData);
+    const validateErrors = validateSeller2(formData)
+    setErrors(validateErrors)
+    return Object.keys(validateErrors).length === 0;
+}
+
+  
   const save = async () => {
+
+    if(!validateform()){
+      return
+    }
     console.log("Saved", formData);
 
     const newData = { ...userData, ...formData };
@@ -69,10 +85,16 @@ const SellerDetails = () => {
             <h2>Complete profile</h2>
             <div className="seller_login-fields">
               <input type="text" placeholder='Store Name' autoComplete='false' name='storeName' value={formData.storeName} onChange={changeHandler} />
-              <input type="text" placeholder='Store Address' autoComplete='off' name='storeAddress' value={formData.storeAddress} onChange={changeHandler} />
-              <input type="text" placeholder='Store Description' autoComplete='off' name='storeDescription' value={formData.storeDescription} onChange={changeHandler} />
-              <input type="text" placeholder='UPI Address' autoComplete='Off' name='paymentInfo' value={formData.paymentInfo} onChange={changeHandler} />
+              {errors.storeName ? <p style={{color : "red"}}>{errors.storeName}</p> : <></>}
 
+              <input type="text" placeholder='Store Address' autoComplete='off' name='storeAddress' value={formData.storeAddress} onChange={changeHandler} />
+              {errors.storeAddress ? <p style={{color : "red"}}>{errors.storeAddress}</p> : <></>}
+
+              <input type="text" placeholder='Store Description' autoComplete='off' name='storeDescription' value={formData.storeDescription} onChange={changeHandler} />
+              {errors.storeDescription ? <p style={{color : "red"}}>{errors.storeDescription}</p> : <></>}
+
+              <input type="text" placeholder='UPI Address' autoComplete='Off' name='paymentInfo' value={formData.paymentInfo} onChange={changeHandler} />
+              {errors.paymentInfo ? <p style={{color : "red"}}>{errors.paymentInfo}</p> : <></>}
             </div>
             <button onClick={() => { save() }}>Save</button>
             {/* <Link to={'/Become_A_Seller'}><p className='back'>&lArr; Back</p></Link> */}

@@ -4,6 +4,8 @@ import './CSS/Become_A_Seller.css'
 import Navbar_shop from '../Components/Navbar_shop/Navbar_shop'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
+import SellerValidation from './SellerValidation';
+
 
 
 const Become_A_Seller = () => {
@@ -18,6 +20,7 @@ const Become_A_Seller = () => {
         sellerPhoneNumber: "",
         sellerEmail: "",
     })
+    const [errors,setErrors] = useState ({})
 
     useEffect(() => {
         console.log("AFTER USEEFFECT >>>>", user)
@@ -28,8 +31,19 @@ const Become_A_Seller = () => {
     const changeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+    const {validateSeller} = SellerValidation()
+
+    const validateform =()=>{
+        console.log("Formdata >>",formData);
+        const validateErrors = validateSeller(formData)
+        setErrors(validateErrors)
+        return Object.keys(validateErrors).length === 0;
+    }
 
     const signup = async () => {
+        if (!validateform()){
+            return
+        }
         console.log("Sign up called", formData);
 
         let responseData;
@@ -107,12 +121,16 @@ const Become_A_Seller = () => {
                         <h2>{state === 'Sign up' ? "Sign Up as a Seller" : "Login to your Account"}</h2>
                         <div className="seller_login-fields">
                             {state === 'Sign up' ? <input type="text" placeholder='Your Name' autoComplete='false' name='sellerName' value={formData.sellerName} onChange={changeHandler} /> : <></>}
+                            {errors.sellerName ? <p style={{color : "red"}}>{errors.sellerName}</p> : <></>}
 
                             <input type="email" placeholder='Email Address' autoComplete='off' name='sellerEmail' value={formData.sellerEmail} onChange={changeHandler} />
+                            {errors.sellerEmail ? <p style={{color : "red"}}>{errors.sellerEmail}</p> : <></>}
 
                             {state === 'Sign up' ? <input type="tel" placeholder='Phone Number' name='sellerPhoneNumber' value={formData.sellerPhoneNumaber} onChange={changeHandler} /> : <></>}
+                            {errors.sellerPhoneNumber ? <p style={{color : "red"}}>{errors.sellerPhoneNumber}</p> : <></>}
 
                             <input type="password" placeholder='Password' autoComplete='Off' id='myInput' name='sellerPassword' value={formData.sellerPassword} onChange={changeHandler} />
+                            {errors.sellerPassword ? <p style={{color : "red"}}>{errors.sellerPassword}</p> : <></>}
 
                             <div>
 
